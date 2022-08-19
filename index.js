@@ -61,6 +61,38 @@ var element2 = document.querySelector('#svg2-ele')
 var element3 = document.querySelector('#svg3-ele')
 var element4 = document.querySelector('#svg4-ele')
 var element5 = document.querySelector('#svg5-ele')
+var element5 = document.querySelector('#svg5-ele')
+var gantt_bars = document.querySelectorAll('.gantt-bar')
+
+console.log(gantt_bars.length);
+/*
+gantt_bars.forEach(function(element){
+    var instance = panzoom(element, {
+      panMode: 'gantt-bar',
+      zoomEffect: false
+    });
+    
+    //instance.on('panstart', function(e) {
+    //        console.log("gantt-bar pan start");
+    //      //e.preventDefault();
+    //      //e.stopPropagation();
+    //});
+    //instance.on('pan', function(e) {
+    //        console.log("gantt-bar pan ");
+    //      //e.preventDefault();
+    //      //e.stopPropagation();
+    //});
+    //instance.on('panend', function(e) {
+    //      //e.preventDefault();
+    //      //e.stopPropagation();
+    //});
+    //instance.on('transform', function(e) {
+    //      //e.preventDefault();
+    //      //e.stopPropagation();
+    //});
+	
+});
+*/
 
 let topLeft = {x: 0, y: 0};
 let topRight = {x: 1, y: 0};

@@ -326,7 +326,9 @@ function createPanZoom(domElement, options) {
 	y > fixTopLeftPosition.y*transform.scale + 1) {
       return;
     }
-    if (panMode == 'x') {
+    if (panMode == 'gantt-bar' ) {
+      transform.x = x;
+    } else if (panMode == 'x' ) {
       transform.x = x;
     } else if (panMode == 'y') {
       transform.y = y;
@@ -861,6 +863,8 @@ function createPanZoom(domElement, options) {
   }
 
   function onMouseDown(e) {
+                //e.preventDefault(); //GS
+                //e.stopPropagation(); //GS
     clearPendingClickEventTimeout();
 
     // if client does not want to handle this event - just ignore the call
@@ -898,8 +902,13 @@ function createPanZoom(domElement, options) {
   }
 
   function onMouseMove(e) {
+                //e.preventDefault(); //GS
+                //e.stopPropagation(); //GS
     // no need to worry about mouse events when touch is happening
     if (touchInProgress) return;
+
+                //e.preventDefault(); //GS
+                //e.stopPropagation(); //GS
 
     triggerPanStart();
 
@@ -915,6 +924,8 @@ function createPanZoom(domElement, options) {
   }
 
   function onMouseUp() {
+                //e.preventDefault(); //GS
+                //e.stopPropagation(); //GS
     var now = new Date();
     if (now - lastMouseDownTime < clickEventTimeInMS) handlePotentialClickEvent(lastMouseDownedEvent);
     textSelection.release();
