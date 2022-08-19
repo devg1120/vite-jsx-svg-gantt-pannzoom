@@ -17,11 +17,28 @@ const opts = {
   onClick: v => console.log(v)
 };
 
+var base_width_int = 200;
+var base_height_int = 60;
+var base_width_px = base_width_int.toString(10) + 'px';
+var base_height_px = base_height_int.toString(10) + 'px';
+
+function gridHeaderSizeZoom(scale) {
+   var base_width_px  = (base_width_int*scale).toString(10)  + 'px';
+   var base_height_px = (base_height_int*scale).toString(10) + 'px';
+   document.documentElement.style.setProperty("--gridWidth", base_width_px );
+   document.documentElement.style.setProperty("--gridHeight", base_height_px );
+}
+
+
+
 //var grid = document.getElementById("g-container");
-document.documentElement.style.setProperty("--gridWidth", "200px");
-document.documentElement.style.setProperty("--gridHeight", "60px");
 //grid.style.setProperty("--gridWidth", 200);
 //grid.style.setProperty("--gridHeight", 60);
+//
+//document.documentElement.style.setProperty("--gridWidth", "200px");
+//document.documentElement.style.setProperty("--gridHeight", "60px");
+document.documentElement.style.setProperty("--gridWidth", base_width_px );
+document.documentElement.style.setProperty("--gridHeight", base_height_px );
 
 //console.log(data);
 // x-header
@@ -57,7 +74,8 @@ var instance1 = panzoom(element1, {
   //boundsPadding: 0.1
   fixTopLeft: true,
   fixTopLeftPosition: {x:-140, y:0},
-  transformOrigin: topLeft
+  transformOrigin: topLeft,
+  zoomEffect: false
 });
 
 
@@ -72,7 +90,8 @@ var instance3 = panzoom(element3, {
   panMode: 'y',
   fixTopLeft: true,
   fixTopLeftPosition: {x:0, y:-60},
-  transformOrigin: topLeft
+  transformOrigin: topLeft,
+  zoomEffect: false
 });
 
 var instance4 = panzoom(element4, {
@@ -86,7 +105,8 @@ var instance5 = panzoom(element5, {
   panMode: 'y',
   fixTopLeft: true,
   fixTopLeftPosition: {x:0, y:-60},
-  transformOrigin: topLeft
+  transformOrigin: topLeft,
+  zoomEffect: false
 });
 
 
@@ -134,17 +154,20 @@ instance2.on('zoom', function(e) {
   var transform = e.getTransform();
   instance1.syncZoomTo(transform);
   instance3.syncZoomTo(transform);
+  instance4.syncZoomTo(transform);
+  instance5.syncZoomTo(transform);
+  gridHeaderSizeZoom(transform.scale);
 
-	// https://www.webdesignleaves.com/pr/plugins/css-grid-masonry.html
-	//
-        var grid = document.getElementById("g-container");
-	console.log(window.getComputedStyle(grid).getPropertyValue("grid-template-columns"));
-	console.log(window.getComputedStyle(grid).getPropertyValue("grid-template-rows"));
-        var x_header = document.getElementById("container-x-header");
-	console.log(grid.style);
-	console.log(x_header.style);
-      //elem.style.border = "2px dotted #00bfa5";
-      //elem.style.backgroundColor = "#c3ebff";
+});
+
+instance4.on('zoom', function(e) {
+  var transform = e.getTransform();
+  instance1.syncZoomTo(transform);
+  instance3.syncZoomTo(transform);
+  instance2.syncZoomTo(transform);
+  instance5.syncZoomTo(transform);
+  gridHeaderSizeZoom(transform.scale);
+
 });
 /*
 instance3.on('zoom', function(e) {

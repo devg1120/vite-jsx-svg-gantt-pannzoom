@@ -52,44 +52,6 @@ export function getData() {
     id: 24,
     parent: 2,
     name: 'Integration'
-  }, {
-    id: 25,
-    parent: 2,
-    name: 'addtional'
-  }, {
-    id: 3,
-    name: 'Testing'
-  }, {
-    id: 31,
-    parent: 3,
-    name: 'unit test'
-  }, {
-    id: 32,
-    parent: 3,
-    name: 'convination test'
-  }, {
-    id: 33,
-    parent: 3,
-    name: 'total test'
-  }, {
-    id: 4,
-    name: 'Production'
-  }, {
-    id: 41,
-    parent: 4,
-    name: 'system monitor'
-  }, {
-    id: 42,
-    parent: 4,
-    name: 'help desk'
-  }, {
-    id: 43,
-    parent: 4,
-    name: 'trouble shoot'
-  }, {
-    id: 44,
-    parent: 4,
-    name: 'Monthly report'
   }];
   tasks.forEach((v) => {
     v.start = rand();

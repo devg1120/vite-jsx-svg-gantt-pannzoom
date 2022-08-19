@@ -72,7 +72,6 @@ function createPanZoom(domElement, options) {
   var transformOrigin = parseTransformOrigin(options.transformOrigin);
   var textSelection = options.enableTextSelection ? fakeTextSelectorInterceptor : domTextSelectionInterceptor;
   var panMode = typeof options.panMode === 'string' ? options.panMode : "xy";
-  var zoomEffect = typeof options.zoomEffect === 'boolean' ? options.zoomEfect : true;
 
   validateBounds(bounds);
 
@@ -1009,7 +1008,6 @@ function createPanZoom(domElement, options) {
   //   return syncScaleMultiplier;
   //};
   function publicZoomTo(clientX, clientY, scaleMultiplier) {
-    if (!zoomEffect) return;
     //syncScaleMultiplier = scaleMultiplier;
     smoothScroll.cancel();
     cancelZoomAnimation();
